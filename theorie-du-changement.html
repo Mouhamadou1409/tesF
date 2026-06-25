@@ -1,0 +1,1058 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<title>Théorie du Changement — Pr Mady CISSE &amp; Pr Ibrahima FALL · ESP/UCAD 2026</title>
+<meta name="description" content="La théorie du changement et le calendrier Gantt de mise en œuvre du programme de Pr Mady CISSE et Pr Ibrahima FALL pour l'ESP UCAD 2026–2029.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.madyibrahima4esp2026.com/theorie-du-changement.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ══ THÉORIE DU CHANGEMENT — styles spécifiques ══ */
+
+/* Intro */
+.tdc-intro-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+.tdc-intro-text p {
+  font-size: var(--text-base);
+  line-height: 1.85;
+  color: var(--text-mid);
+  margin-bottom: 1rem;
+}
+.tdc-intro-text p strong { color: var(--black); }
+.tdc-intro-quote {
+  background: var(--esp-navy);
+  border-radius: var(--r-lg);
+  padding: 2.5rem;
+  border-left: 5px solid var(--esp-blue);
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+.tdc-intro-quote::before {
+  content: '"';
+  position: absolute; top: .5rem; left: 1.5rem;
+  font-size: 5rem; color: rgba(40,151,232,.18);
+  line-height: 1; font-weight: 900;
+}
+.tdc-intro-quote p {
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  color: var(--white);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+  position: relative; z-index: 1;
+}
+.tdc-intro-quote p strong { color: var(--esp-blue); }
+.tdc-intro-quote-attr {
+  display: flex; align-items: center; gap: .8rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+.tdc-attr-line { width: 24px; height: 2px; background: var(--esp-blue); flex-shrink: 0; }
+.tdc-attr-txt {
+  font-size: var(--text-xs); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: rgba(255,255,255,.5);
+}
+
+/* ── Chaîne logique ── */
+.tdc-chain-section { background: var(--esp-navy); }
+.tdc-chain-section .eyebrow { color: var(--esp-blue); }
+.tdc-chain-section .eyebrow::before { background: var(--esp-blue); }
+.tdc-chain-section .section-hd.center .eyebrow { justify-content: center; }
+.tdc-chain-section .section-title { color: var(--white); }
+.tdc-chain-section .section-intro { color: rgba(255,255,255,.55); }
+
+.tdc-chain {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-top: 2.5rem;
+  overflow-x: auto;
+  padding-bottom: .5rem;
+}
+
+.tdc-node {
+  flex: 1;
+  min-width: 170px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+  position: relative;
+}
+.tdc-node:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,.4);
+}
+.tdc-node-hd {
+  padding: .8rem 1rem;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.tdc-node-icon { font-size: 1rem; }
+.tdc-node-body { padding: 1rem 1rem 1.2rem; }
+.tdc-node-body ul { list-style: none; }
+.tdc-node-body ul li {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,.65);
+  padding: .35rem 0 .35rem .9rem;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  position: relative;
+  line-height: 1.45;
+}
+.tdc-node-body ul li:last-child { border-bottom: none; }
+.tdc-node-body ul li::before {
+  content: '';
+  position: absolute; left: 0; top: .7rem;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Couleurs des nœuds */
+.tdc-node.n-prob .tdc-node-hd { background: rgba(220,38,38,.25); color: #fca5a5; }
+.tdc-node.n-prob .tdc-node-body ul li::before { background: #fca5a5; }
+
+.tdc-node.n-res .tdc-node-hd { background: rgba(234,179,8,.2); color: #fde68a; }
+.tdc-node.n-res .tdc-node-body ul li::before { background: #fde68a; }
+
+.tdc-node.n-act .tdc-node-hd { background: rgba(40,151,232,.3); color: var(--esp-blue); }
+.tdc-node.n-act .tdc-node-body ul li::before { background: var(--esp-blue); }
+
+.tdc-node.n-ext .tdc-node-hd { background: rgba(139,92,246,.25); color: #c4b5fd; }
+.tdc-node.n-ext .tdc-node-body ul li::before { background: #c4b5fd; }
+
+.tdc-node.n-res2 .tdc-node-hd { background: rgba(16,185,129,.25); color: #6ee7b7; }
+.tdc-node.n-res2 .tdc-node-body ul li::before { background: #6ee7b7; }
+
+.tdc-node.n-imp .tdc-node-hd { background: rgba(255,255,255,.12); color: #fff; border-top: 2px solid var(--esp-blue); }
+.tdc-node.n-imp .tdc-node-body ul li::before { background: var(--white); }
+.tdc-node.n-imp .tdc-node-body ul li { color: rgba(255,255,255,.8); }
+
+.tdc-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  color: rgba(255,255,255,.25);
+  font-size: 1.4rem;
+  user-select: none;
+}
+
+/* ── Axes → Résultats ── */
+.tdc-axes-section { background: var(--white); }
+
+.tdc-axes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+.tdc-axe-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+}
+.tdc-axe-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.tdc-axe-hd {
+  background: var(--esp-navy);
+  padding: 1rem 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+}
+.tdc-axe-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--esp-blue);
+  color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: var(--text-xs); font-weight: 900;
+  flex-shrink: 0;
+}
+.tdc-axe-title { font-size: var(--text-sm); font-weight: 700; color: var(--white); line-height: 1.3; }
+.tdc-axe-body { padding: 1.2rem 1.3rem; }
+.tdc-axe-body .tdc-label {
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.8px; color: var(--esp-blue);
+  margin-bottom: .5rem; display: block;
+}
+.tdc-axe-body ul { list-style: none; }
+.tdc-axe-body ul li {
+  font-size: var(--text-xs);
+  color: var(--text-mid);
+  padding: .3rem 0 .3rem 1.1rem;
+  position: relative;
+  border-bottom: 1px dashed var(--gray-200);
+  line-height: 1.5;
+}
+.tdc-axe-body ul li:last-child { border-bottom: none; }
+.tdc-axe-body ul li::before {
+  content: '→';
+  position: absolute; left: 0;
+  color: var(--esp-blue); font-weight: 700; font-size: .75rem;
+}
+
+/* ── Hypothèses ── */
+.tdc-hyp-section { background: var(--gray-100); }
+
+.tdc-hyp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+.tdc-hyp-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--r-lg);
+  padding: 1.5rem;
+  border-top: 3px solid var(--esp-blue);
+  transition: transform .25s, box-shadow .25s;
+}
+.tdc-hyp-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.tdc-hyp-icon { font-size: 1.8rem; margin-bottom: .8rem; }
+.tdc-hyp-card h4 {
+  font-size: var(--text-sm); font-weight: 700;
+  color: var(--esp-navy); margin-bottom: .5rem;
+}
+.tdc-hyp-card p { font-size: var(--text-xs); color: var(--text-mid); line-height: 1.7; }
+
+/* ── Risques & Mitigation ── */
+.tdc-risk-section { background: var(--white); }
+.tdc-risk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+.tdc-risk-card {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: box-shadow .25s;
+}
+.tdc-risk-card:hover { box-shadow: var(--shadow); }
+.tdc-risk-hd {
+  background: var(--esp-blue-bg);
+  padding: .9rem 1.2rem;
+  display: flex; align-items: center; gap: .7rem;
+  border-bottom: 1px solid rgba(5,100,168,.1);
+}
+.tdc-risk-badge {
+  font-size: 9px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 1.5px; padding: .2rem .65rem;
+  border-radius: 100px;
+}
+.badge-high { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+.badge-med  { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+.badge-low  { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+.tdc-risk-hd-title { font-size: var(--text-sm); font-weight: 700; color: var(--esp-navy); }
+.tdc-risk-body { padding: 1rem 1.2rem; }
+.tdc-risk-row { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+.tdc-risk-col-lbl {
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--text-lt); margin-bottom: .3rem;
+}
+.tdc-risk-col p { font-size: var(--text-xs); color: var(--text-mid); line-height: 1.6; }
+
+/* ── Indicateurs de succès ── */
+.tdc-indic-section { background: var(--esp-navy); }
+.tdc-indic-section .section-title { color: var(--white); }
+.tdc-indic-section .section-intro { color: rgba(255,255,255,.55); }
+.tdc-indic-section .eyebrow { color: var(--esp-blue); }
+.tdc-indic-section .eyebrow::before { background: var(--esp-blue); }
+.tdc-indic-section .section-hd.center .eyebrow { justify-content: center; }
+
+.tdc-indic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+.tdc-indic-col {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.tdc-indic-col-hd {
+  padding: .9rem 1.2rem;
+  display: flex; align-items: center; gap: .7rem;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.tdc-indic-col-hd .tdc-period {
+  font-size: 9px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 1.5px; padding: .25rem .75rem;
+  border-radius: 100px;
+}
+.period-ct { background: rgba(40,151,232,.25); color: var(--esp-blue); border: 1px solid rgba(40,151,232,.4); }
+.period-mt { background: rgba(139,92,246,.2); color: #c4b5fd; border: 1px solid rgba(139,92,246,.4); }
+.period-lt { background: rgba(16,185,129,.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,.4); }
+.tdc-indic-col-title {
+  font-size: var(--text-xs); font-weight: 700; color: var(--white); line-height: 1.3;
+}
+.tdc-indic-list { padding: 1rem 1.2rem 1.2rem; list-style: none; }
+.tdc-indic-list li {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,.55);
+  padding: .5rem 0 .5rem 1.1rem;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  position: relative;
+  line-height: 1.55;
+}
+.tdc-indic-list li:last-child { border-bottom: none; }
+.tdc-indic-list li::before {
+  content: '';
+  position: absolute; left: 0; top: .95rem;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--esp-blue);
+}
+.tdc-indic-list li strong { color: var(--white); font-weight: 700; }
+
+/* ── Image théorie du changement ── */
+.tdc-theory-img {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+.tdc-theory-img img {
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  border-radius: var(--r-lg);
+  box-shadow: 0 8px 40px rgba(0,0,0,.35);
+  display: inline-block;
+}
+
+/* ── Gantt dans théorie du changement ── */
+.tdc-gantt-section { background: var(--gray-100); }
+
+/* ── Chaîne de changement — layout horizontal en cartes ── */
+.tdc-chain-section { background: #141b4d !important; }
+.tdc-chain-section .section-title { color: #fff; }
+.tdc-chain-section .section-intro { color: rgba(255,255,255,.55); }
+.tdc-chain-flow {
+  display: flex; align-items: stretch; gap: 0;
+  margin-top: 2.5rem; overflow-x: auto; padding-bottom: .75rem;
+  min-width: 0;
+}
+.tcf-col {
+  flex: 1; min-width: 210px;
+  border-radius: 10px; overflow: hidden;
+  display: flex; flex-direction: column;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.tcf-header {
+  padding: 1.2rem 1rem 1rem;
+  text-align: center;
+  display: flex; flex-direction: column;
+  align-items: center; gap: .4rem;
+}
+.tcf-icon { font-size: 1.35rem; line-height: 1; }
+.tcf-header h4 {
+  font-size: .72rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: #f5c842; line-height: 1.4; margin: 0;
+}
+.tcf-list {
+  list-style: none; padding: 1rem 1rem;
+  margin: 0; display: flex; flex-direction: column;
+  gap: .65rem; flex: 1;
+}
+.tcf-list li {
+  display: flex; align-items: flex-start; gap: .5rem;
+  font-size: .74rem; color: rgba(255,255,255,.85); line-height: 1.5;
+}
+.tcf-list li::before {
+  content: '●'; flex-shrink: 0; margin-top: .2em; font-size: .42rem;
+}
+.tcf-arrow {
+  display: flex; align-items: center; justify-content: center;
+  width: 28px; flex-shrink: 0;
+  color: rgba(255,255,255,.3); font-size: 1.4rem;
+}
+/* ── Scroll hint ── */
+.tcf-scroll-hint {
+  display: flex; align-items: center; justify-content: center; gap: .8rem;
+  margin-bottom: 1.2rem;
+  color: rgba(255,255,255,.85);
+  font-size: 1rem; font-weight: 700; letter-spacing: .8px;
+  user-select: none;
+}
+.tcf-scroll-hint .tcf-sh-icon {
+  display: flex; align-items: center; gap: 6px;
+}
+.tcf-scroll-hint .sh-dot {
+  width: 11px; height: 11px; border-radius: 50%;
+  background: rgba(255,255,255,.5);
+  animation: shDot 1.6s ease-in-out infinite;
+}
+.tcf-scroll-hint .sh-dot:nth-child(2) { animation-delay: .2s; }
+.tcf-scroll-hint .sh-dot:nth-child(3) { animation-delay: .4s; }
+@keyframes shDot {
+  0%,100% { background: rgba(255,255,255,.3); transform: scale(1); }
+  50%      { background: #06AEFD; transform: scale(1.45); }
+}
+.tcf-scroll-hint .sh-arrow {
+  font-size: 1.4rem; animation: shArrow 1.6s ease-in-out infinite;
+  display: inline-block;
+}
+@keyframes shArrow {
+  0%,100% { transform: translateX(0); opacity:.6; }
+  50%      { transform: translateX(7px); opacity:1; }
+}
+/* Toujours visible — mobile et ordinateur */
+
+/* Header backgrounds + bullet colors */
+.tcf-col-problems  .tcf-header { background: #a02828; }
+.tcf-col-problems  .tcf-list li::before { color: #e06060; }
+.tcf-col-resources .tcf-header { background: #243260; }
+.tcf-col-resources .tcf-list li::before { color: #6a90d0; }
+.tcf-col-activities.tcf-header, .tcf-col-activities .tcf-header { background: #1558a8; }
+.tcf-col-activities .tcf-list li::before { color: #06AEFD; }
+.tcf-col-outputs   .tcf-header { background: #542880; }
+.tcf-col-outputs   .tcf-list li::before { color: #a060d8; }
+.tcf-col-results   .tcf-header { background: #126858; }
+.tcf-col-results   .tcf-list li::before { color: #18c8a0; }
+.tcf-col-impact    .tcf-header { background: #185898; }
+.tcf-col-impact    .tcf-list li::before { color: #50a8e8; }
+
+/* ── Tableau Théorie du Changement ── */
+.tdc-theory-table-outer {
+  margin-top: 2.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 50px rgba(0,0,0,.6);
+}
+.tdc-theory-table-wrap {
+  overflow-x: auto;
+}
+.tdc-theory-table {
+  width: 100%;
+  min-width: 1000px;
+  border-collapse: collapse;
+  table-layout: auto;
+  font-size: .6rem;
+  line-height: 1.4;
+  font-family: 'Montserrat', sans-serif;
+}
+.tdc-theory-table th,
+.tdc-theory-table td {
+  border: 1px solid rgba(255,255,255,.18);
+  padding: .5rem .35rem;
+  vertical-align: middle;
+  text-align: center;
+}
+.tdc-th-main-header {
+  background: #0d1f4e;
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 700;
+  padding: .9rem 1.3rem;
+  line-height: 1.6;
+  font-style: italic;
+  text-align: center;
+  border-bottom: 2px solid rgba(40,151,232,.5);
+}
+.tdc-row-label {
+  background: #050c1e;
+  color: #fff;
+  font-size: .54rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  width: 34px;
+  min-width: 34px;
+  max-width: 34px;
+  padding: .4rem .15rem;
+  text-align: center;
+}
+.tdc-tr-impact td {
+  background: #1a3470;
+  color: #fff;
+  font-weight: 600;
+  font-size: .61rem;
+}
+.tdc-tr-resultats td {
+  background: #1d4f8c;
+  color: #e8f0fe;
+  font-size: .59rem;
+}
+.tdc-tr-extrants td {
+  background: #1e5fad;
+  color: #e8f0fe;
+  font-size: .59rem;
+}
+.tdc-tr-activites td {
+  background: #0077a8;
+  color: #fff;
+  font-weight: 600;
+  font-size: .61rem;
+}
+.tdc-tr-constats td {
+  background: #1a4a8c;
+  color: #e8f0fe;
+  font-size: .59rem;
+  font-weight: 600;
+  border-color: rgba(255,255,255,.12);
+}
+.tdc-tr-constats .tdc-row-label { border-color: rgba(255,255,255,.18); }
+.tdc-tr-result-imm td {
+  background: #1a6abf;
+  color: #e8f0fe;
+  font-size: .59rem;
+}
+.tdc-tr-arrow td {
+  background: #0d1a3e;
+  color: rgba(255,255,255,.35);
+  text-align: center;
+  padding: .15rem;
+  font-size: .85rem;
+  border-color: rgba(255,255,255,.06);
+  line-height: 1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .tdc-intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .tdc-indic-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .tdc-chain { gap: 0; }
+  .tdc-arrow { width: 20px; font-size: 1rem; }
+  .tdc-node { min-width: 130px; }
+  .tdc-risk-row { grid-template-columns: 1fr; }
+  .tdc-indic-grid { grid-template-columns: 1fr; }
+  .tdc-axes-grid { grid-template-columns: 1fr; }
+  .tdc-hyp-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .tdc-hyp-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ TOPBAR ══ -->
+<div class="topbar">
+  <div class="tb-l">
+    <span>📍 <strong>Dakar, Sénégal</strong></span>
+  </div>
+    <div class="tb-r">
+    <a href="https://www.esp.sn" target="_blank" rel="noopener noreferrer">esp.sn</a>
+    <span class="sep">|</span>
+    <a href="https://www.ucad.sn" target="_blank" rel="noopener noreferrer">ucad.sn</a>
+  </div>
+</div>
+
+<!-- ══ HEADER ══ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand" aria-label="Accueil">
+      <div class="brand-logo">
+        <img src="assets/logo.jpg" alt="Logo ESP" onerror="this.style.display='none';this.parentNode.querySelector('.brand-logo-text').style.display='block'">
+        <span class="brand-logo-text" style="display:none">ESP</span>
+  </div>
+      <div class="brand-text">
+        <span class="brand-name">Élections Directeur &amp; Directeur des Études — ESP</span>
+        <span class="brand-sub">Ensemble vers une nouvelle dynamique de performances</span>
+  </div>
+    </a>
+    <div class="header-cta">
+      <a href="index.html#video" class="nav-btn nav-btn-video">&#9654; Notre programme en vidéo</a>
+      <a href="documents/programme-complet.pdf" class="nav-btn nav-btn-pdf" download="Programme-ESP-UCAD-2026.pdf" target="_blank" rel="noopener noreferrer">&#128196; Notre programme en PDF</a>
+  </div>
+    <nav aria-label="Navigation principale">
+      <ul class="main-nav">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="candidats.html">Candidats</a></li>
+        <li><a href="vision.html">Vision</a></li>
+        <li><a href="programme.html">Axes strat&eacute;giques</a></li>
+        <li><a href="projets.html">Projets structurants</a></li>
+        <li><a href="theorie-du-changement.html" class="active">Théorie du changement</a></li>
+        <li><a href="calendrier.html">Calendrier de mise en oeuvre</a></li>
+
+      </ul>
+    </nav>
+    <button class="burger" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
+  <button class="close-btn" id="closeMenu" aria-label="Fermer">✕</button>
+  <a href="index.html">Accueil</a>
+  <a href="candidats.html">Les Candidats</a>
+  <a href="vision.html">Vision</a>
+  <a href="programme.html">Axes strat&eacute;giques</a>
+  <a href="projets.html">Projets structurants</a>
+  <a href="theorie-du-changement.html">Théorie du changement</a>
+  <a href="calendrier.html">Calendrier de mise en oeuvre</a>
+  <div class="mob-nav-actions">
+    <a href="index.html#video" class="nav-btn nav-btn-video">&#9654; Notre programme en vidéo</a>
+    <a href="documents/programme-complet.pdf" class="nav-btn nav-btn-pdf" download="Programme-ESP-UCAD-2026.pdf" target="_blank" rel="noopener noreferrer">&#128196; Notre programme en PDF</a>
+  </div>
+</nav>
+
+<!-- ══ PAGE BANNER ══ -->
+<section class="page-banner">
+  <div class="container">
+    <div class="eyebrow">Cadre logique</div>
+    <h1 class="page-banner-title">Théorie du Changement</h1>
+    <p class="page-banner-sub">La chaîne logique qui relie nos actions aux résultats attendus — de l'état actuel de l'ESP à la vision d'une institution d'excellence africaine.</p>
+  </div>
+</section>
+
+<!-- ══ INTRODUCTION ══ -->
+<section class="section" id="introduction">
+  <div class="container">
+    <div class="tdc-intro-grid">
+      <div class="tdc-intro-text reveal">
+        <div class="eyebrow">Pourquoi une théorie du changement ?</div>
+        <h2 class="section-title">Un programme ancré dans<br>une logique de résultats</h2>
+        <p>La théorie du changement est le fil conducteur de notre programme. Elle explique <strong>comment et pourquoi</strong> les activités que nous proposons vont produire les résultats escomptés pour l'École Supérieure Polytechnique.</p>
+        <p>Elle établit une <strong>chaîne causale claire</strong> : partant des problèmes identifiés au sein de l'institution, elle décrit les ressources mobilisées, les activités prévues à travers nos 8 axes stratégiques, les extrants concrets produits par les 5 projets structurants, et les résultats attendus à court, moyen et long terme.</p>
+        <p>Ce cadre permet à la communauté ESP de <strong>mesurer objectivement nos progrès</strong> tout au long du mandat 2026–2029, grâce à des indicateurs précis définis pour chaque niveau de résultat.</p>
+        <div class="vision-feats" style="margin-top:1.5rem">
+          <div class="vfeat"><div class="vfeat-n">8</div><div class="vfeat-t">Axes stratégiques d'intervention</div></div>
+          <div class="vfeat"><div class="vfeat-n">5</div><div class="vfeat-t">Projets structurants mesurables</div></div>
+          <div class="vfeat"><div class="vfeat-n">3</div><div class="vfeat-t">Niveaux de résultats</div></div>
+          <div class="vfeat"><div class="vfeat-n">36</div><div class="vfeat-t">Mois de mise en œuvre</div></div>
+  </div>
+  </div>
+      <div class="reveal">
+        <div class="tdc-intro-quote" style="background:linear-gradient(135deg,#03306b 0%,#0564A8 60%,#0490d4 100%)!important;">
+          <p>Notre programme s'articule autour de <strong style="color:#fff;">8 axes stratégiques</strong> assortis d'indicateurs mesurables, d'une théorie du changement claire et de <strong style="color:#fff;">5 projets structurants</strong> concrets — avec un calendrier de mise en œuvre trimestriel sur 2026–2029.</p>
+          <div class="tdc-intro-quote-attr">
+            <div class="tdc-attr-line"></div>
+            <div class="tdc-attr-txt">Programme officiel — Pr Mady CISSE &amp; Pr Ibrahima FALL</div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+</section>
+
+<!-- ══ CHAÎNE LOGIQUE ══ -->
+<section class="section tdc-chain-section" id="chaine-logique">
+  <div class="container">
+    <div class="section-hd center">
+      <div class="eyebrow">Modèle logique</div>
+      <h2 class="section-title">La chaîne du changement</h2>
+      <p class="section-intro">De la situation initiale à l'impact durable — chaque maillon de la chaîne est lié aux suivants par une logique causale explicite.</p>
+  </div>
+
+    <!-- Indicateur de défilement horizontal -->
+    <div class="tcf-scroll-hint">
+      <div class="tcf-sh-icon">
+        <span class="sh-dot"></span>
+        <span class="sh-dot"></span>
+        <span class="sh-dot"></span>
+  </div>
+      <span>Glisser pour voir la suite</span>
+      <span class="sh-arrow">&#8594;</span>
+  </div>
+
+    <div class="tdc-chain-flow reveal">
+
+      <!-- ─── 1. Constats ─── -->
+      <div class="tcf-col tcf-col-problems">
+        <div class="tcf-header">
+          <span class="tcf-icon">&#9888;</span>
+          <h4>Constats</h4>
+  </div>
+        <ul class="tcf-list">
+          <li>Situation sociale délétère</li>
+          <li>Communication interne et externe défaillante</li>
+          <li>Environnement d'études et de travail non adaptés</li>
+          <li>Grosses difficultés avec les marchés</li>
+          <li>Difficultés avec le recrutement des PER</li>
+          <li>Incompréhensions avec la hiérarchie et la tutelle</li>
+          <li>Structuration incomplète de la recherche</li>
+          <li>Cloisonnement des départements</li>
+          <li>Faible performance de l'Administration</li>
+        </ul>
+  </div>
+
+      <div class="tcf-arrow">&#8594;</div>
+
+      <!-- ─── 2. Activités ─── -->
+      <div class="tcf-col tcf-col-resources">
+        <div class="tcf-header">
+          <span class="tcf-icon">&#9881;</span>
+          <h4>Activités</h4>
+  </div>
+        <ul class="tcf-list">
+          <li>Mise en place d'un système de gouvernance transparente et efficace</li>
+          <li>Structuration de la communication (interne et externe) et amélioration de la visibilité de l'ESP</li>
+          <li>Aménagement d'un environnement de travail et d'apprentissage adapté</li>
+          <li>Restructuration et développement de l'offre pédagogique</li>
+          <li>Développement de la recherche, de l'innovation et de l'entrepreneuriat</li>
+        </ul>
+  </div>
+
+      <div class="tcf-arrow">&#8594;</div>
+
+      <!-- ─── 3. Extrants ─── -->
+      <div class="tcf-col tcf-col-activities">
+        <div class="tcf-header">
+          <span class="tcf-icon">&#128196;</span>
+          <h4>Extrants</h4>
+  </div>
+        <ul class="tcf-list">
+          <li>Cadre réglementaire adapté (Décret, manuels de procédures)</li>
+          <li>Système d'information intégré avec plateformes de gestion</li>
+          <li>Politique sociale adaptée</li>
+          <li>Dynamique partenariale et de coopération renforcée</li>
+          <li>Bureau de communication fonctionnel</li>
+          <li>Laboratoires pédagogiques et de recherche équipés</li>
+          <li>Bâtiments construits/rénovés et espaces aménagés</li>
+          <li>Nouvelle offre de formation bimodale (TICEs &amp; IA)</li>
+          <li>Structure fédératrice (Pôle ou centre) créée</li>
+          <li>Dispositif entrepreneuriat (FORGE &amp; ESP Entreprise)</li>
+        </ul>
+  </div>
+
+      <div class="tcf-arrow">&#8594;</div>
+
+      <!-- ─── 4. Résultats immédiats ─── -->
+      <div class="tcf-col tcf-col-outputs">
+        <div class="tcf-header">
+          <span class="tcf-icon">&#9989;</span>
+          <h4>Résultats<br>immédiats</h4>
+  </div>
+        <ul class="tcf-list">
+          <li>Gestion administrative et financière entièrement réglementée</li>
+          <li>Ressources humaines valorisées, optimisées et motivées</li>
+          <li>Paix sociale instaurée de manière durable</li>
+          <li>Taux d'exécution des marchés amélioré</li>
+          <li>Ressources additionnelles augmentées</li>
+          <li>Bonne circulation de l'information et visibilité de l'École</li>
+          <li>Meilleures conditions d'apprentissage et de travail</li>
+          <li>Leadership et rayonnement fortement renforcés</li>
+          <li>Réseau des alumni fort</li>
+          <li>Partenariat vivant et accru, plus de startups sur le marché</li>
+        </ul>
+  </div>
+
+      <div class="tcf-arrow">&#8594;</div>
+
+      <!-- ─── 5. Résultats intermédiaires ─── -->
+      <div class="tcf-col tcf-col-results">
+        <div class="tcf-header">
+          <span class="tcf-icon">&#128200;</span>
+          <h4>Résultats<br>intermédiaires</h4>
+  </div>
+        <ul class="tcf-list">
+          <li>Augmentation de la confiance entre acteurs ESP, UCAD et MESRI</li>
+          <li>Amélioration de la performance et de la qualité des services</li>
+          <li>Attractivité accrue</li>
+          <li>Mobilisation continue de l'ensemble des composants (PER, PATS, Étudiants)</li>
+          <li>Impact grandissant sur le développement socioéconomique du Sénégal et de l'Afrique</li>
+        </ul>
+  </div>
+
+      <div class="tcf-arrow">&#8594;</div>
+
+      <!-- ─── 6. Impact ─── -->
+      <div class="tcf-col tcf-col-impact">
+        <div class="tcf-header">
+          <span class="tcf-icon">&#127942;</span>
+          <h4>Impact<br>durable</h4>
+  </div>
+        <ul class="tcf-list">
+          <li>L'ESP se positionne au Sénégal et en Afrique comme établissement leader de l'ingénierie et du management, valorisant le savoir par l'industrie, les services et l'entrepreneuriat au service des organisations publiques et privées</li>
+        </ul>
+  </div>
+  </div>
+  </div>
+</section>
+
+
+<!-- ══ HYPOTHÈSES ══ -->
+<section class="section tdc-hyp-section" id="hypotheses">
+  <div class="container">
+    <div class="section-hd center">
+      <div class="eyebrow">Conditions de succès</div>
+      <h2 class="section-title">Hypothèses et conditions<br>de réalisation</h2>
+      <p class="section-intro">La réussite du programme repose sur des conditions que Pr Mady CISSE et Pr Ibrahima FALL s'engagent à réunir et à surveiller tout au long du mandat.</p>
+  </div>
+
+    <div class="tdc-hyp-grid">
+      <div class="tdc-hyp-card reveal">
+        <div class="tdc-hyp-icon">&#129309;</div>
+        <h4>Mobilisation de la communauté ESP</h4>
+        <p>L'adhésion et la participation active des étudiants, enseignants et personnels administratifs sont indispensables. Des mécanismes de concertation régulière seront mis en place dès le premier mois.</p>
+  </div>
+      <div class="tdc-hyp-card reveal">
+        <div class="tdc-hyp-icon">&#127963;</div>
+        <h4>Soutien institutionnel de l'UCAD</h4>
+        <p>L'engagement des tutelles — Rectorat de l'UCAD et Ministère de l'Enseignement Supérieur — est une condition préalable à la mobilisation des ressources nécessaires aux projets structurants.</p>
+  </div>
+      <div class="tdc-hyp-card reveal">
+        <div class="tdc-hyp-icon">&#128176;</div>
+        <h4>Disponibilité des financements</h4>
+        <p>Les projets d'infrastructure (PS3) et de recherche (PS5) nécessitent des financements spécifiques. La recherche de partenariats et de financements externes sera une priorité de la direction.</p>
+  </div>
+      <div class="tdc-hyp-card reveal">
+        <div class="tdc-hyp-icon">&#127758;</div>
+        <h4>Partenariats stratégiques actifs</h4>
+        <p>La réalisation des objectifs d'internationalisation repose sur la consolidation et l'extension des partenariats académiques et industriels, nationaux et internationaux.</p>
+  </div>
+      <div class="tdc-hyp-card reveal">
+        <div class="tdc-hyp-icon">&#128736;</div>
+        <h4>Stabilité institutionnelle</h4>
+        <p>Un environnement institutionnel stable au sein de l'UCAD et dans le secteur de l'enseignement supérieur sénégalais permettra une mise en œuvre sereine du programme sur 3 ans.</p>
+  </div>
+      <div class="tdc-hyp-card reveal">
+        <div class="tdc-hyp-icon">&#128202;</div>
+        <h4>Capacité de suivi-évaluation</h4>
+        <p>Un dispositif interne de suivi-évaluation sera mis en place pour mesurer l'atteinte des indicateurs, permettre des ajustements et rendre compte régulièrement à la communauté.</p>
+  </div>
+  </div>
+  </div>
+</section>
+
+<!-- ══ RISQUES ══ -->
+<section class="section tdc-risk-section" id="risques">
+  <div class="container">
+    <div class="section-hd center">
+      <div class="eyebrow">Gestion des risques</div>
+      <h2 class="section-title">Risques identifiés<br>et mesures de mitigation</h2>
+      <p class="section-intro">Une gestion proactive des risques garantit la résilience du programme face aux aléas institutionnels et environnementaux.</p>
+  </div>
+
+    <div class="tdc-risk-grid">
+
+      <div class="tdc-risk-card reveal">
+        <div class="tdc-risk-hd">
+          <span class="tdc-risk-badge badge-high">Risque élevé</span>
+          <div class="tdc-risk-hd-title">Contraintes budgétaires de l'UCAD</div>
+  </div>
+        <div class="tdc-risk-body">
+          <div class="tdc-risk-row">
+            <div class="tdc-risk-col">
+              <div class="tdc-risk-col-lbl">Risque</div>
+              <p>Réduction des dotations budgétaires limitant la réalisation des projets d'infrastructure.</p>
+  </div>
+            <div class="tdc-risk-col">
+              <div class="tdc-risk-col-lbl">Mitigation</div>
+              <p>Diversification des sources : financements externes, partenariats public-privé, appels à projets régionaux.</p>
+  </div>
+  </div>
+  </div>
+  </div>
+
+      <div class="tdc-risk-card reveal">
+        <div class="tdc-risk-hd">
+          <span class="tdc-risk-badge badge-med">Risque modéré</span>
+          <div class="tdc-risk-hd-title">Résistance au changement interne</div>
+  </div>
+        <div class="tdc-risk-body">
+          <div class="tdc-risk-row">
+            <div class="tdc-risk-col">
+              <div class="tdc-risk-col-lbl">Risque</div>
+              <p>Réticences de certains acteurs face aux réformes pédagogiques et organisationnelles.</p>
+  </div>
+            <div class="tdc-risk-col">
+              <div class="tdc-risk-col-lbl">Mitigation</div>
+              <p>Approche participative, ateliers de co-construction, communication transparente sur les bénéfices attendus.</p>
+  </div>
+  </div>
+  </div>
+  </div>
+
+      <div class="tdc-risk-card reveal">
+        <div class="tdc-risk-hd">
+          <span class="tdc-risk-badge badge-med">Risque modéré</span>
+          <div class="tdc-risk-hd-title">Délais de mise en œuvre</div>
+  </div>
+        <div class="tdc-risk-body">
+          <div class="tdc-risk-row">
+            <div class="tdc-risk-col">
+              <div class="tdc-risk-col-lbl">Risque</div>
+              <p>Retards dans la réalisation des projets en raison de procédures administratives ou de contraintes techniques.</p>
+  </div>
+            <div class="tdc-risk-col">
+              <div class="tdc-risk-col-lbl">Mitigation</div>
+              <p>Planning Gantt détaillé avec jalons trimestriels, revues régulières et plans de contingence par projet.</p>
+  </div>
+  </div>
+  </div>
+  </div>
+
+      <div class="tdc-risk-card reveal">
+        <div class="tdc-risk-hd">
+          <span class="tdc-risk-badge badge-low">Risque faible</span>
+          <div class="tdc-risk-hd-title">Instabilité du contexte national</div>
+  </div>
+        <div class="tdc-risk-body">
+          <div class="tdc-risk-row">
+            <div class="tdc-risk-col">
+              <div class="tdc-risk-col-lbl">Risque</div>
+              <p>Perturbations liées à l'environnement sociopolitique affectant le fonctionnement de l'UCAD.</p>
+  </div>
+            <div class="tdc-risk-col">
+              <div class="tdc-risk-col-lbl">Mitigation</div>
+              <p>Dialogue social continu, adaptabilité du programme, maintien des priorités essentielles en toutes circonstances.</p>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+</section>
+
+<!-- ══ INDICATEURS DE SUCCÈS ══ -->
+<section class="section tdc-indic-section" id="indicateurs" style="background:linear-gradient(135deg,#03306b 0%,#0564A8 60%,#0490d4 100%)!important;">
+  <div class="container">
+    <div class="section-hd center">
+      <div class="eyebrow">Suivi-évaluation</div>
+      <h2 class="section-title">Indicateurs de succès<br>par période</h2>
+      <p class="section-intro">Des indicateurs concrets permettent à la communauté ESP de mesurer l'avancement du programme à chaque étape du mandat.</p>
+  </div>
+
+    <div class="tdc-indic-grid">
+
+      <div class="tdc-indic-col reveal">
+        <div class="tdc-indic-col-hd">
+          <span class="tdc-period period-ct">Court terme</span>
+          <div class="tdc-indic-col-title">2026 — 2027</div>
+  </div>
+        <ul class="tdc-indic-list">
+          <li><strong>Manuel des procédures</strong> administratives finalisé et adopté</li>
+          <li><strong>Organigramme</strong> institutionnel publié et opérationnel</li>
+          <li><strong>Structure de communication</strong> mise en place et active</li>
+          <li><strong>Bureau et salle témoins</strong> rénovés et inaugurés</li>
+          <li><strong>Portail web</strong> modernisé et fonctionnel</li>
+          <li><strong>Dispositif de veille</strong> des chercheurs actif</li>
+          <li><strong>Forge ESP</strong> opérationnelle avec financement d'amorçage</li>
+          <li><strong>Projet d'établissement</strong> triennal adopté en concertation</li>
+        </ul>
+  </div>
+
+      <div class="tdc-indic-col reveal">
+        <div class="tdc-indic-col-hd">
+          <span class="tdc-period period-mt">Moyen terme</span>
+          <div class="tdc-indic-col-title">2027 — 2028</div>
+  </div>
+        <ul class="tdc-indic-list">
+          <li><strong>30% des salles</strong> aménagées aux normes et équipées</li>
+          <li><strong>Système d'information intégré</strong> déployé et utilisé</li>
+          <li><strong>Manuel pédagogique</strong> adopté et appliqué</li>
+          <li><strong>Classes préparatoires</strong> intégrées et fonctionnelles</li>
+          <li><strong>Bimodalité</strong> dans 50% des départements opérationnelle</li>
+          <li><strong>CRIE</strong> (Centre de Ressources &amp; Innovation) créé</li>
+          <li><strong>Réseau des alumni</strong> structuré et actif</li>
+          <li><strong>Nouveaux partenariats</strong> internationaux signés</li>
+        </ul>
+  </div>
+
+      <div class="tdc-indic-col reveal">
+        <div class="tdc-indic-col-hd">
+          <span class="tdc-period period-lt">Long terme</span>
+          <div class="tdc-indic-col-title">2028 — 2029</div>
+  </div>
+        <ul class="tdc-indic-list">
+          <li><strong>Tour de recherche</strong> et Data Center opérationnels</li>
+          <li><strong>Bimodalité 100%</strong> + nouvelles filières lancées</li>
+          <li><strong>Taux d'insertion professionnelle</strong> des diplômés amélioré</li>
+          <li><strong>Publications scientifiques</strong> de l'ESP en hausse mesurable</li>
+          <li><strong>Accords de doubles diplômes</strong> avec universités partenaires</li>
+          <li><strong>Classement régional</strong> de l'ESP amélioré</li>
+          <li><strong>Budget recherche</strong> consolidé et pérenne</li>
+          <li><strong>Satisfaction des parties prenantes</strong> évaluée positivement</li>
+        </ul>
+  </div>
+  </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-next-bar">
+    <span class="fnb-label">Page suivante</span>
+    <a href="calendrier.html" class="fnb-link">Calendrier de mise en &oelig;uvre <span class="fnb-arrow">&#8594;</span></a>
+  </div>
+  <div class="footer-top">
+    <div>
+      <div class="foot-name">Pr Mady CISSE &amp; Pr Ibrahima FALL</div>
+      <div class="foot-tag">« Ensemble vers une nouvelle dynamique de performances »</div>
+      <p class="foot-desc">Candidats Directeur &amp; Directeur des Études de l'École Supérieure Polytechnique de l'UCAD pour l'élection de Juillet 2026.</p>
+      <a href="https://www.madyibrahima4esp2026.com" class="foot-link" rel="noopener noreferrer">&#127760; madyibrahima4esp2026.com</a>
+  </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="candidats.html">Les Candidats</a></li>
+        <li><a href="vision.html">Notre Vision</a></li>
+        <li><a href="programme.html">8 Axes Stratégiques</a></li>
+        <li><a href="projets.html">Projets structurants</a></li>
+        <li><a href="theorie-du-changement.html">Théorie du changement</a></li>
+        <li><a href="calendrier.html">Calendrier de mise en oeuvre</a></li>
+      </ul>
+  </div>
+    <div class="footer-col">
+      <h4>Documents</h4>
+      <ul>
+        <li><a href="documents/profession-de-foi.pdf" target="_blank" rel="noopener noreferrer">Profession de Foi (PDF)</a></li>
+        <li><a href="documents/programme-complet.pdf" download="Programme-ESP-UCAD-2026.pdf" target="_blank" rel="noopener noreferrer">Notre programme en PDF</a></li>
+        <li><a href="theorie-du-changement.html">Théorie du changement</a></li>
+        </ul>
+  </div>
+    <div class="footer-col">
+      <h4>Liens utiles</h4>
+      <ul>
+        <li><a href="https://www.esp.sn" target="_blank" rel="noopener noreferrer">www.esp.sn</a></li>
+        <li><a href="https://www.ucad.sn" target="_blank" rel="noopener noreferrer">www.ucad.sn</a></li>
+        </ul>
+  </div>
+  </div>
+  <div class="footer-vid-cta">
+    <a href="index.html#video" class="nav-btn nav-btn-video">&#9654; Notre programme en vidéo</a>
+    <a href="documents/programme-complet.pdf" class="nav-btn nav-btn-pdf" download="Programme-ESP-UCAD-2026.pdf" target="_blank" rel="noopener noreferrer">&#128196; Notre programme en PDF</a>
+  </div>
+  <div class="footer-bot">
+    <p class="footer-copy">© 2026 Pr Mady CISSE &amp; Pr Ibrahima FALL — Programme ESP/UCAD. Tous droits réservés.</p>
+    <div class="socials">
+      <a href="#" class="soc" aria-label="Facebook" rel="noopener noreferrer">f</a>
+      <a href="#" class="soc" aria-label="LinkedIn" rel="noopener noreferrer">in</a>
+      <a href="#" class="soc" aria-label="Twitter / X" rel="noopener noreferrer">&#120143;</a>
+      <a href="#" class="soc" aria-label="YouTube" rel="noopener noreferrer">&#9654;</a>
+  </div>
+  </div>
+
+</footer>
+
+<script src="main.js" defer></script>
+<a href="index.html#video" class="float-vid" aria-label="Voir la vidéo"><span class="fv-icon">&#9654;</span><span class="fv-label">Voir la vidéo</span></a>
+</body>
+</html>

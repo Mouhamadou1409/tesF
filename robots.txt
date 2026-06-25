@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /.well-known/
+Disallow: /.htaccess
+
+Sitemap: https://www.madyibrahima4esp2026.com/sitemap.xml

@@ -1,0 +1,115 @@
+# ============================================================
+#  ESP Campagne 2026 — Sécurité Serveur Apache
+# ============================================================
+
+# ── HTTPS forcé ──────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ── En-têtes de sécurité HTTP ────────────────────────────────
+<IfModule mod_headers.c>
+  # Empêche le sniffing de type MIME
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Protection clickjacking
+  Header always set X-Frame-Options "DENY"
+
+  # Protection XSS navigateurs anciens
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Politique référent stricte
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Désactiver les APIs navigateur inutiles
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+
+  # HSTS (forcer HTTPS pendant 1 an)
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  # Content Security Policy
+  Header always set Content-Security-Policy "default-src 'self'; \
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
+    font-src https://fonts.gstatic.com; \
+    img-src 'self' data: blob:; \
+    script-src 'self'; \
+    connect-src 'self' https://formspree.io; \
+    frame-ancestors 'none'; \
+    base-uri 'self'; \
+    form-action 'self' https://formspree.io; \
+    object-src 'none'; \
+    upgrade-insecure-requests;"
+
+  # Supprimer les en-têtes révélant la technologie
+  Header always unset X-Powered-By
+  Header always unset Server
+</IfModule>
+
+# ── Masquer les informations serveur ─────────────────────────
+ServerTokens Prod
+ServerSignature Off
+
+# ── Interdire la navigation dans les dossiers ────────────────
+Options -Indexes -MultiViews
+
+# ── Bloquer l'accès aux fichiers sensibles ───────────────────
+<FilesMatch "(^\.htaccess|^\.htpasswd|^\.env|\.log$|\.sql$|\.bak$|\.config$|\.ini$|\.sh$)">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# ── Bloquer les méthodes HTTP dangereuses ────────────────────
+<IfModule mod_rewrite.c>
+  RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK|DELETE|PUT|PATCH)$ [NC]
+  RewriteRule .* - [F,L]
+</IfModule>
+
+# ── Bloquer les tentatives d'injection SQL dans l'URL ────────
+<IfModule mod_rewrite.c>
+  RewriteCond %{QUERY_STRING} (union.*select|select.*from|insert.*into|delete.*from|drop\s+table|alter\s+table|exec\s*\(|execute\s*\() [NC,OR]
+  RewriteCond %{QUERY_STRING} (benchmark|sleep|waitfor|pg_sleep) [NC,OR]
+  RewriteCond %{REQUEST_URI} (\.\./|\.\.\\) [NC]
+  RewriteRule .* - [F,L]
+</IfModule>
+
+# ── Bloquer les tentatives XSS dans l'URL ────────────────────
+<IfModule mod_rewrite.c>
+  RewriteCond %{QUERY_STRING} (<script|javascript:|vbscript:|onload=|onerror=|onclick=) [NC,OR]
+  RewriteCond %{QUERY_STRING} (%3Cscript|%3C%2Fscript|%22%3E%3Cscript) [NC]
+  RewriteRule .* - [F,L]
+</IfModule>
+
+# ── Bloquer les User-Agents malveillants ─────────────────────
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTP_USER_AGENT} (masscan|sqlmap|nikto|nmap|havij|acunetix|netsparker|w3af|skipfish|burpsuite|openvas) [NC]
+  RewriteRule .* - [F,L]
+</IfModule>
+
+# ── Limiter la taille des requêtes ───────────────────────────
+LimitRequestBody 1048576
+
+# ── Cache des assets statiques ───────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# ── Compression Gzip ─────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json text/xml
+</IfModule>
+
+# ── Page d'erreur personnalisée ──────────────────────────────
+ErrorDocument 403 /403.html
+ErrorDocument 404 /404.html

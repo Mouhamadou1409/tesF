@@ -1,0 +1,12 @@
+# Vidéo trop grande pour GitHub (>100 Mo)
+video/vid.mp4
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+*.swp
+*.swo
